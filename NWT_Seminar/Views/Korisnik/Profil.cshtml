@@ -1,0 +1,51 @@
+﻿@model NWT_Seminar.Models.Korisnik
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Korisnik</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nadimak)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nadimak)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.slika)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.slika)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lokacija)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lokacija)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

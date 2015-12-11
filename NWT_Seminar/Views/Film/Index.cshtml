@@ -1,0 +1,74 @@
+﻿@model IEnumerable<NWT_Seminar.Models.Film>
+
+@{
+    ViewBag.Title = "Zadnji filmovi";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var prvi = Model.First();
+    var ostali = Model.Skip(1);
+}
+
+<!-- Portfolio Item Heading -->
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">
+            Zadnji filmovi
+            <small>Popis</small>
+        </h1>
+    </div>
+</div>
+<!-- /.row -->
+
+
+<!-- Prvi film -->
+<div class="row">
+    <div class="col-md-8">
+        <a href="@Url.Action("Title", "Film", new { id= prvi.ID, title = prvi.naslov })">
+            <img class="img-responsive" alt="Slika filma" src="@Html.DisplayFor(model => prvi.slikaURL)" />
+        </a>
+    </div>
+    <div class="col-md-4">
+        <h1>
+            <a href="@Url.Action("Title", "Film", new { id= prvi.ID, title = prvi.naslov })">
+                @Html.DisplayFor(model => prvi.Prikaz)
+            </a>
+        </h1>
+        <h4>@Html.LabelFor(model => prvi.opis)</h4>
+        <p>@Html.DisplayFor(model => prvi.opis)</p>
+
+        <h4>Stuff:</h4>
+        <ul>
+            <li>@Html.LabelFor(model => prvi.scenarist) @Html.DisplayFor(model => prvi.scenarist.ImePrezime)</li>
+            <li>@Html.LabelFor(model => prvi.redatelj) @Html.DisplayFor(model => prvi.redatelj.ImePrezime)</li>
+            @foreach (var glum in prvi.glumci)
+            {
+                <li>@Html.LabelFor(modelGlum => glum) @Html.DisplayFor(m => glum.ImePrezime)</li>
+            }
+        </ul>
+    </div>
+</div>
+<!-- /.row -->
+
+
+
+<!-- od drugog do petog filma -->
+<div class="row film-row">
+@foreach (var item in ostali)
+{
+    <div class="col-sm-3 col-xs-6 film-other">
+        <div class="row">
+            <a class="film-link" href="@Url.Action("Title", "Film", new { id= item.ID, title = item.naslov })">
+                @Html.DisplayFor(modelItem => item.Prikaz)
+            </a>
+        </div>
+
+        <div class="row cover-other">
+            <a class="film-link" href="@Url.Action("Title", "Film", new { id= item.ID, title = item.naslov })">
+                <img class="img-responsive" alt="Slika filma" src="@Html.DisplayFor(model => item.slikaURL)" />
+            </a>
+        </div>
+
+    </div>
+}
+</div>
+
+    

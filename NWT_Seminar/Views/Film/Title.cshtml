@@ -1,0 +1,79 @@
+﻿@model NWT_Seminar.Models.Film
+
+@{
+    ViewBag.Title = "Film";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<h2>Neki Film</h2>
+
+<div>
+    <h4>Film</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.naslov)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.naslov)
+        </dd>
+         
+        <dt>
+            @Html.DisplayNameFor(model => model.scenarist) 
+        </dt>
+
+        <dd>
+            @Html.DisplayFor( model => model.scenarist.ImePrezime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.redatelj)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.redatelj.ImePrezime)
+        </dd>
+
+        @foreach ( var glum in Model.glumci)
+        {
+            <dt>
+                @Html.LabelFor(a => glum)
+            </dt>
+
+            <dd>
+                    @Html.DisplayFor(a => glum.ImePrezime)
+            </dd>
+        }
+
+        <dt>
+            @Html.DisplayNameFor(model => model.opis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.opis)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.godina)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.godina)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.prosjecnaOcjena)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.prosjecnaOcjena)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
